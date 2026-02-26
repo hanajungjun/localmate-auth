@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>로그인 처리 중</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body
+    style="
+      font-family: system-ui;
+      text-align: center;
+      padding-top: 100px;
+    "
+  >
+    <h2>로그인 처리 중입니다</h2>
+    <p>아래 버튼을 눌러 앱으로 돌아가세요</p>
+
+    <a
+      id="deepLink"
+      href="#"
+      style="
+        display: inline-block;
+        margin-top: 24px;
+        padding: 14px 26px;
+        font-size: 16px;
+        border-radius: 8px;
+        background: #3478f6;
+        color: white;
+        text-decoration: none;
+      "
+    >
+      앱으로 돌아가기
+    </a>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+
+      if (!code) {
+        document.body.innerHTML = "<p>잘못된 접근입니다.</p>";
+      } else {
+        const deepLink =
+          "io.supabase.flutter://login-callback?code=" + code;
+
+        // 🔥 핵심: href에 직접 넣기
+        document.getElementById("deepLink").href = deepLink;
+      }
+    </script>
+  </body>
+</html>
