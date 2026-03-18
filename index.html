@@ -39,12 +39,10 @@
 
       if (!code) {
         document.body.innerHTML = "<p>잘못된 접근입니다.</p>";
-      } else {
-        const deepLink =
-          "io.supabase.flutter://login-callback?code=" + code;
-
-        // 🔥 핵심: href에 직접 넣기
+      } else {  
+        const deepLink = "localmate://login-callback?code=" + code;
         document.getElementById("deepLink").href = deepLink;
+        
       }
     </script>
   </body>
